@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>What Egypt lost during its National Anti-Corruption Strategy years</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{--blue:#378ADD;--coral:#D85A30;--teal:#1D9E75;--amber:#BA7517;--gray:#888780;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:#fff;color:#2c2c2a;}
+  #root{padding:clamp(12px,3vw,20px);}
+  .hdr{border-left:3px solid #D85A30;padding-left:10px;margin-bottom:10px;}
+  .tag{font-size:clamp(9px,2vw,10px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin-bottom:2px;}
+  .ttl{font-size:clamp(13px,3.5vw,15px);font-weight:700;line-height:1.4;margin-bottom:2px;}
+  .sub{font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;}
+  .callout{background:#f1efe8;border-left:3px solid #D85A30;padding:8px 11px;font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;line-height:1.6;margin:9px 0;font-style:italic;}
+  .src{font-size:clamp(9px,2vw,10px);color:var(--gray);margin-top:10px;line-height:1.4;}
+  .cards{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .card{flex:1;min-width:min(100px,44%);border-radius:8px;padding:clamp(9px,2.5vw,12px) clamp(10px,3vw,13px);}
+  @media(prefers-color-scheme:dark){body{background:#1a1a18;color:#d3d1c7;}.callout{background:#2c2c2a;color:#b4b2a9;}.sub,.src{color:#b4b2a9;}}
+</style>
+</head>
+<body><div id="root">
+  <div class="hdr"><p class="tag">Zawia3 &middot; Chart 5 of 6</p><p class="ttl">What Egypt lost during its National Anti-Corruption Strategy years</p><p class="sub">36 ranks and 7 points over 11 years and three consecutive strategies</p></div>
+  <div class="callout">Since the first strategy launched in 2014, Egypt has lost 36 places and 7 points in the very index it was trying to improve.</div>
+  
+<div class="cards" style="margin-bottom:12px">
+  <div class="card" style="background:#faece7;text-align:center">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#993C1D;margin-bottom:2px">Score lost</p>
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#5f5e5a;margin-bottom:3px">37 &rarr; 30</p>
+    <p style="font-size:clamp(28px,8vw,36px);font-weight:800;color:#D85A30;line-height:1" id="pts">0</p>
+    <p style="font-size:clamp(10px,2.5vw,11px);color:#D85A30;font-weight:700">points</p>
+  </div>
+  <div class="card" style="background:#faece7;text-align:center">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#993C1D;margin-bottom:2px">Rank dropped</p>
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#5f5e5a;margin-bottom:3px">94 &rarr; 130</p>
+    <p style="font-size:clamp(28px,8vw,36px);font-weight:800;color:#D85A30;line-height:1" id="rnk">0</p>
+    <p style="font-size:clamp(10px,2.5vw,11px);color:#D85A30;font-weight:700">places</p>
+  </div>
+  <div class="card" style="background:#f1efe8;text-align:center">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#5f5e5a;margin-bottom:2px">Strategy lifespan</p>
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#5f5e5a;margin-bottom:3px">2014 &ndash; today</p>
+    <p style="font-size:clamp(28px,8vw,36px);font-weight:800;color:#BA7517;line-height:1" id="yrs">0</p>
+    <p style="font-size:clamp(10px,2.5vw,11px);color:#BA7517;font-weight:700">years</p>
+  </div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:4px">
+  <div style="background:#f1efe8;border-radius:7px;padding:9px 12px;display:flex;justify-content:space-between;align-items:center">
+    <span style="font-size:clamp(11px,3vw,12px);font-weight:600">2014 &mdash; First strategy launched</span>
+    <span style="font-size:clamp(11px,3vw,12px);color:#1D9E75;font-weight:700">37 pts &mdash; rank 94</span>
+  </div>
+  <div style="background:#faece7;border-radius:7px;padding:9px 12px;display:flex;justify-content:space-between;align-items:center">
+    <span style="font-size:clamp(11px,3vw,12px);font-weight:600">2025 &mdash; Third strategy underway</span>
+    <span style="font-size:clamp(11px,3vw,12px);color:#D85A30;font-weight:700">30 pts &mdash; rank 130</span>
+  </div>
+</div>
+<script>
+(function(){
+  var s=null;
+  function cu(ts){if(!s)s=ts;var p=Math.min((ts-s)/800,1),e=1-Math.pow(1-p,3);
+    document.getElementById("pts").textContent=Math.round(e*7);
+    document.getElementById("rnk").textContent=Math.round(e*36);
+    document.getElementById("yrs").textContent=Math.round(e*11);
+    if(p<1)requestAnimationFrame(cu);else{document.getElementById("pts").textContent="7";document.getElementById("rnk").textContent="36";document.getElementById("yrs").textContent="11";}
+  }
+  setTimeout(function(){requestAnimationFrame(cu);},200);
+})();
+</script>
+  <p class="src">Source: Transparency International / Administrative Control Authority</p>
+</div>
+<script>
+(function(){function notify(){var h=document.getElementById("root").offsetHeight;window.parent.postMessage({type:"chartResize",height:h},"*");}
+setTimeout(notify,1400);window.addEventListener("resize",notify);
+try{new ResizeObserver(function(){setTimeout(notify,80);}).observe(document.body);}catch(e){}})();
+</script></body></html>

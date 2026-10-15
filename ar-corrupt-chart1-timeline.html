@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>درجة مصر في مؤشر مدركات الفساد من 2012 إلى 2025</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#378ADD;--coral:#D85A30;--teal:#1D9E75;--amber:#BA7517;--gray:#888780;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Tajawal",sans-serif;background:#fff;color:#2c2c2a;direction:rtl;}
+  #root{padding:clamp(12px,3vw,20px);}
+  .hdr{border-right:3px solid #378ADD;padding-right:10px;margin-bottom:10px;}
+  .tag{font-size:clamp(9px,2vw,10px);font-weight:700;letter-spacing:.06em;color:var(--gray);margin-bottom:2px;}
+  .ttl{font-size:clamp(13px,3.5vw,15px);font-weight:700;line-height:1.4;margin-bottom:2px;}
+  .sub{font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;}
+  .callout{background:#f1efe8;border-right:3px solid #378ADD;padding:8px 11px;font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;line-height:1.6;margin:9px 0;font-style:italic;}
+  .src{font-size:clamp(9px,2vw,10px);color:var(--gray);margin-top:10px;line-height:1.4;text-align:right;}
+  .cards{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .card{flex:1;min-width:min(100px,44%);border-radius:8px;padding:clamp(9px,2.5vw,12px) clamp(10px,3vw,13px);}
+  @media(prefers-color-scheme:dark){body{background:#1a1a18;color:#d3d1c7;}.callout{background:#2c2c2a;color:#b4b2a9;}.sub,.src{color:#b4b2a9;}}
+</style>
+</head>
+<body><div id="root">
+  <div class="hdr"><p class="tag">زاوية ثالثة · إنفوجرافيك ① من ⑥</p><p class="ttl">درجة مصر في مؤشر مدركات الفساد من 2012 إلى 2025</p><p class="sub">32 نقطة في البداية، 37 في الذروة، 30 في نهاية 2025</p></div>
+  <div class="callout">"32 نقطة في 2012 و2013، ثم 37 في 2014، وهبوط متقطع حتى الاستقرار على 30 نقطة في إصدارات 2022 و2024 و2025"</div>
+  
+<div class="cards" style="margin-bottom:10px">
+  <div class="card" style="background:#edf7f3;text-align:center">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#5f5e5a;margin-bottom:2px">الذروة — 2014</p>
+    <p style="font-size:clamp(20px,5.5vw,26px);font-weight:800;color:#1D9E75">37</p>
+    <p style="font-size:clamp(9px,2vw,10px);color:#888780">نقطة من 100</p>
+  </div>
+  <div class="card" style="background:#faece7;text-align:center">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#993C1D;margin-bottom:2px">إصدار 2025</p>
+    <p style="font-size:clamp(20px,5.5vw,26px);font-weight:800;color:#D85A30">30</p>
+    <p style="font-size:clamp(9px,2vw,10px);color:#888780">نقطة من 100</p>
+  </div>
+  <div class="card" style="background:#f1efe8;text-align:center">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#5f5e5a;margin-bottom:2px">الخسارة</p>
+    <p style="font-size:clamp(20px,5.5vw,26px);font-weight:800;color:#BA7517">7</p>
+    <p style="font-size:clamp(9px,2vw,10px);color:#888780">نقاط في 11 عامًا</p>
+  </div>
+</div>
+<div style="position:relative;width:100%;height:clamp(180px,46vw,210px)"><canvas id="c1"></canvas></div>
+<script>
+(function(){
+var dk=matchMedia("(prefers-color-scheme:dark)").matches;
+var tc=dk?"#b4b2a9":"#5f5e5a",gc=dk?"rgba(255,255,255,.08)":"rgba(0,0,0,.07)";
+var coral=dk?"#F0997B":"#D85A30",teal=dk?"#5DCAA5":"#1D9E75",amber=dk?"#FAC775":"#BA7517",blue=dk?"#85B7EB":"#378ADD";
+var scores=[32,32,37,36,34,32,35,35,33,33,30,35,30,30];
+var ptc=scores.map(function(v,i){
+  if(i===2)return teal;
+  if(i===10||i===12||i===13)return coral;
+  return blue+"88";
+});
+var ptr=scores.map(function(v,i){return(i===2||i===10||i===12||i===13)?6:3;});
+new Chart(document.getElementById("c1"),{type:"line",
+  data:{labels:["2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],
+    datasets:[{data:scores,borderColor:blue,borderWidth:2.5,
+      pointBackgroundColor:ptc,pointRadius:ptr,tension:0.2,fill:true,
+      backgroundColor:dk?"rgba(55,138,221,0.07)":"rgba(55,138,221,0.05)"}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:900,easing:"easeOutQuart"},
+  plugins:{legend:{display:false},
+  tooltip:{backgroundColor:dk?"#2c2c2a":"#fff",borderColor:dk?"rgba(255,255,255,.1)":"rgba(0,0,0,.08)",borderWidth:1,
+    titleColor:dk?"#d3d1c7":"#2c2c2a",bodyColor:tc,padding:10,
+    titleFont:{family:"Tajawal"},bodyFont:{family:"Tajawal"},
+    callbacks:{label:function(c){return c.raw+" نقطة من 100";}}}},
+  scales:{x:{ticks:{color:tc,font:{size:9,family:"Tajawal",weight:"700"},maxRotation:45},grid:{display:false},border:{color:gc}},
+    y:{min:20,max:45,ticks:{color:tc,font:{size:9,family:"Tajawal"},callback:function(v){return v;}},grid:{color:gc},border:{display:false}}}}
+});
+})();
+</script>
+  <p class="src">المصدر: منظمة الشفافية الدولية — مؤشر مدركات الفساد (الإصدارات 2012-2025)</p>
+</div>
+<script>
+(function(){function notify(){var h=document.getElementById("root").offsetHeight;window.parent.postMessage({type:"chartResize",height:h},"*");}
+setTimeout(notify,1400);window.addEventListener("resize",notify);
+try{new ResizeObserver(function(){setTimeout(notify,80);}).observe(document.body);}catch(e){}})();
+</script></body></html>

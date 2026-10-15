@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>مصر مقابل المتوسطين العربي والعالمي في مؤشر مدركات الفساد 2025</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#378ADD;--coral:#D85A30;--teal:#1D9E75;--amber:#BA7517;--gray:#888780;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Tajawal",sans-serif;background:#fff;color:#2c2c2a;direction:rtl;}
+  #root{padding:clamp(12px,3vw,20px);}
+  .hdr{border-right:3px solid #D85A30;padding-right:10px;margin-bottom:10px;}
+  .tag{font-size:clamp(9px,2vw,10px);font-weight:700;letter-spacing:.06em;color:var(--gray);margin-bottom:2px;}
+  .ttl{font-size:clamp(13px,3.5vw,15px);font-weight:700;line-height:1.4;margin-bottom:2px;}
+  .sub{font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;}
+  .callout{background:#f1efe8;border-right:3px solid #D85A30;padding:8px 11px;font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;line-height:1.6;margin:9px 0;font-style:italic;}
+  .src{font-size:clamp(9px,2vw,10px);color:var(--gray);margin-top:10px;line-height:1.4;text-align:right;}
+  .cards{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .card{flex:1;min-width:min(100px,44%);border-radius:8px;padding:clamp(9px,2.5vw,12px) clamp(10px,3vw,13px);}
+  @media(prefers-color-scheme:dark){body{background:#1a1a18;color:#d3d1c7;}.callout{background:#2c2c2a;color:#b4b2a9;}.sub,.src{color:#b4b2a9;}}
+</style>
+</head>
+<body><div id="root">
+  <div class="hdr"><p class="tag">زاوية ثالثة · إنفوجرافيك ② من ⑥</p><p class="ttl">مصر مقابل المتوسطين العربي والعالمي في مؤشر مدركات الفساد 2025</p><p class="sub">30 نقطة لمصر مقابل 34 عربيًا و42 عالميًا</p></div>
+  <div class="callout">"تقع مصر بهذه الدرجة تحت المتوسط العربي البالغ 34 نقطة والمتوسط العالمي البالغ 42"</div>
+  
+<div style="position:relative;width:100%;height:clamp(190px,50vw,220px)"><canvas id="c2"></canvas></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+  <div style="background:#faece7;border-radius:8px;padding:9px 11px;text-align:center">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#993C1D;margin-bottom:2px">الفجوة عن المتوسط العربي</p>
+    <p style="font-size:clamp(18px,5vw,22px);font-weight:800;color:#D85A30">4 نقاط</p>
+  </div>
+  <div style="background:#faece7;border-radius:8px;padding:9px 11px;text-align:center">
+    <p style="font-size:clamp(9px,2.2vw,10px);color:#993C1D;margin-bottom:2px">الفجوة عن المتوسط العالمي</p>
+    <p style="font-size:clamp(18px,5vw,22px);font-weight:800;color:#D85A30">12 نقطة</p>
+  </div>
+</div>
+<script>
+(function(){
+var dk=matchMedia("(prefers-color-scheme:dark)").matches;
+var tc=dk?"#b4b2a9":"#5f5e5a",gc=dk?"rgba(255,255,255,.08)":"rgba(0,0,0,.07)";
+var coral=dk?"#F0997B":"#D85A30",amber=dk?"#FAC775":"#BA7517",gray=dk?"#B4B2A9":"#888780",teal=dk?"#5DCAA5":"#1D9E75";
+new Chart(document.getElementById("c2"),{type:"bar",
+  data:{
+    labels:[
+      ["مصر 2025","(الترتيب 130/182)"],
+      ["مصر 2014","(أعلى درجة)"],
+      ["المتوسط العربي","(2025)"],
+      ["المتوسط العالمي","(2025)"]
+    ],
+    datasets:[{
+      data:[30,37,34,42],
+      backgroundColor:[coral,teal,amber,gray],
+      borderWidth:0,borderRadius:5
+    }]
+  },
+  options:{indexAxis:"y",responsive:true,maintainAspectRatio:false,animation:{duration:900,easing:"easeOutQuart"},
+  plugins:{legend:{display:false},
+  tooltip:{backgroundColor:dk?"#2c2c2a":"#fff",borderColor:dk?"rgba(255,255,255,.1)":"rgba(0,0,0,.08)",borderWidth:1,titleColor:dk?"#d3d1c7":"#2c2c2a",bodyColor:tc,padding:10,titleFont:{family:"Tajawal"},bodyFont:{family:"Tajawal"},callbacks:{label:function(c){return c.raw+" نقطة من 100";}}}},
+  scales:{x:{min:0,max:60,ticks:{color:tc,font:{size:9,family:"Tajawal"}},grid:{color:gc},border:{display:false}},
+    y:{ticks:{color:tc,font:{size:9,family:"Tajawal"}},grid:{display:false},border:{display:false}}}}
+});
+})();
+</script>
+  <p class="src">المصدر: منظمة الشفافية الدولية / المجلس الوطني المصري للتنافسية</p>
+</div>
+<script>
+(function(){function notify(){var h=document.getElementById("root").offsetHeight;window.parent.postMessage({type:"chartResize",height:h},"*");}
+setTimeout(notify,1400);window.addEventListener("resize",notify);
+try{new ResizeObserver(function(){setTimeout(notify,80);}).observe(document.body);}catch(e){}})();
+</script></body></html>
